@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Net.NetworkInformation;
 
 namespace Excel2CSharp
 {
     class Program
     {
         private static Dictionary<string , DataSetExchangeTool> _cacheDataSetExchangeToolDict = new Dictionary<string , DataSetExchangeTool> ();
+        public static string configPath;
 
         static void Main (string [] args)
         {
             Console.WriteLine ("Excel2CSharp - Input \"help\" to view command");
             System.Text.Encoding.RegisterProvider (System.Text.CodePagesEncodingProvider.Instance);
-            ExcelOverViewTable.Ins.Init ("E:\\Luna_svn\\preview\\tools\\excel_json\\excel\\设置导出的表格.xlsx");
+            ExcelOverViewTableManager.Ins.Init ("E:\\Luna_svn\\preview\\tools\\excel_json\\excel\\设置导出的表格.xlsx");
+            configPath = Path.GetFullPath ("../../../Excel2Csharp/Config/");
             string input;
 
             //命令处理循环
@@ -39,10 +43,11 @@ namespace Excel2CSharp
         {
             var sw = new Stopwatch ();
             sw.Start ();
-            for ( int i = 0 ; i < ExcelOverViewTable.Ins.GetExcelCount () ; i++ )
+            for ( int i = 0 ; i < ExcelOverViewTableManager.Ins.GetExcelCount () ; i++ )
             {
-                new DataSetExchangeTool (ExcelOverViewTable.Ins.GetExcelSourceFileName (i));
+                new DataSetExchangeTool (ExcelOverViewTableManager.Ins.GetExcelSourceFileName (i));
             }
+            Proto2CSharpManager.Ins.Init ("E:\\Luna_svn\\preview\\LunaProject\\LibraryZero\\BattleCheck\\proto");
             Console.WriteLine ($"total time:{sw.ElapsedMilliseconds / 1000}s");
         }
 

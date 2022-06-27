@@ -5,7 +5,7 @@ namespace Excel2CSharp
     /// <summary>
     /// Excel总览表，用于管理参与导出的表格
     /// </summary>
-    public class ExcelOverViewTable : SafeSingleton<ExcelOverViewTable>
+    public class ExcelOverViewTableManager : SafeSingleton<ExcelOverViewTableManager>
     {
         /// <summary>
         /// 用于记录Excel总览数据的字典

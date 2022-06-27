@@ -28,7 +28,7 @@ namespace Excel2CSharp
         public void ExportProtoFile ()
         {
             var tableCount = _excel2DataSet.GetTableCount ();
-            var sheetList = ExcelOverViewTable.Ins.GetSheetList (_sourcefileName);
+            var sheetList = ExcelOverViewTableManager.Ins.GetSheetList (_sourcefileName);
 
             for ( int tableIndex = 0 ; tableIndex < tableCount ; tableIndex++ )
             {
@@ -134,7 +134,7 @@ namespace Excel2CSharp
                     }
 
                     //写入变量
-                    sb.Append ($"\t{ExcelUtil.GetTypeName (typeName)} {variableName} = {j};");
+                    sb.Append ($"\t{ExcelUtil.GetTypeName (typeName)} {variableName} = {j + 1};");
                     //写入注释
                     sb.Append ($"\t\t//{desc}\n");
 
@@ -163,32 +163,6 @@ namespace Excel2CSharp
                 bw.Close ();
                 fs.Close ();
             }
-        }
-
-        /// <summary>
-        /// 检查表格是否有效
-        /// 这个表格标准是项目而定的，主要是对表头信息进行检查，符合要求才是项目需要的配置表
-        /// </summary>
-        /// <returns></returns>
-        private bool CheckExcelSheetIsUseful (DataTable dataTable)
-        {
-            //如果表头信息都不存在，不继续
-            if ( dataTable.Rows.Count < 3 || dataTable.Columns.Count < 1 )
-            {
-                return false;
-            }
-
-            string desc = dataTable.GetString (0 , 0);
-            string type = dataTable.GetString (1 , 0);
-            string variable = dataTable.GetString (2 , 0);
-
-            //缺少任一重要信息，不继续执行
-            if ( string.IsNullOrEmpty (desc) || string.IsNullOrEmpty (type) || string.IsNullOrEmpty (variable) )
-            {
-                return false;
-            }
-
-            return desc.Equals ("desc") && type.Equals ("type") && variable.Equals ("id");
         }
 
         /// <summary>

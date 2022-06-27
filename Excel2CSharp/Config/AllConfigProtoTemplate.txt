@@ -1,0 +1,10 @@
+﻿syntax = "proto3";
+package {0};
+
+{1}
+
+//汇总其它配置表Proto
+message {2}
+{
+{3}
+}
