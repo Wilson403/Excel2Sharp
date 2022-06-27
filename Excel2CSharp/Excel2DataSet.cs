@@ -28,7 +28,7 @@ namespace Excel2CSharp
                     {
                         throw new Exception ($"{excelFile}读取异常");
                     }
-                    Console.WriteLine ($"{excelFile}：读取耗时{sw.ElapsedMilliseconds}ms");
+                    Console.WriteLine ($"{excelFile}：读取耗时:{sw.ElapsedMilliseconds}ms");
                 }
             }
         }
