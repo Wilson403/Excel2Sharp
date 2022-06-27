@@ -28,25 +28,19 @@ namespace Excel2CSharp
         public void ExportProtoFile ()
         {
             var tableCount = _excel2DataSet.GetTableCount ();
+            var sheetList = ExcelOverViewTable.Ins.GetSheetList (_sourcefileName);
+
             for ( int tableIndex = 0 ; tableIndex < tableCount ; tableIndex++ )
             {
                 var sheet = _excel2DataSet [tableIndex];
-                var vo = ExcelOverViewTable.Ins.GetSheetList (_sourcefileName).FirstOrDefault (x => x.sheetName.Equals (sheet.TableName));
+                var vo = sheetList.FirstOrDefault (x => x.sheetName.Equals (sheet.TableName));
 
                 //表格无法索引时抛出异常
                 if ( string.IsNullOrEmpty (vo.exportFileName) )
                 {
-                    Console.WriteLine ($"跳过了一个格式不符合的配置表。源文件：{_sourcefileName}, 表格：{sheet.TableName}");
+                    ConsoleHelper.Ins.WriteWarningLine ($"跳过了一个格式不符合的配置表。源文件：{_sourcefileName}, 表格：{sheet.TableName}");
                     continue;
-                    // throw new Exception ($"无效的表格，文件：{_sourcefileName} 名称：{sheet.TableName}");
                 }
-
-                ////表格格式检查
-                //if ( !CheckExcelSheetIsUseful (sheet) )
-                //{
-                //    Console.WriteLine ($"跳过了一个格式不符合的配置表。源文件：{_sourcefileName}, 表格：{vo.exportFileName}");
-                //    continue;
-                //}
 
                 string fileName;
                 string className;
