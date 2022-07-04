@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -25,6 +24,9 @@ namespace Excel2CSharp
             ExportProtoFile ();
         }
 
+        /// <summary>
+        /// 导出Proto文件
+        /// </summary>
         public void ExportProtoFile ()
         {
             var tableCount = _excel2DataSet.GetTableCount ();
@@ -79,7 +81,7 @@ namespace Excel2CSharp
                 sb.Append ("syntax = \"proto3\";\n");
 
                 //首行写入包声明
-                sb.Append ($"package {GetNameSpace (vo)};\n\n");
+                sb.Append ($"package { ExcelConst.EXCEL_2_PROTOBUF_SCRIPT_NAMESPACE_1};\n\n");
 
                 //写入消息名称
                 sb.Append ($"message {className}{ExcelConst.CONFIG_VALUEOBJECT_MESSAGE_END_NAME}{{\n");
@@ -88,13 +90,13 @@ namespace Excel2CSharp
 
                 for ( int j = 0 ; j < col ; j++ )
                 {
-                    if ( CheckExcelColIsNull (sheet , j) )
+                    if ( ExcelOverViewTableManager.Ins.CheckExcelColIsNull (sheet , j) )
                     {
                         //如果下一列也为空，直接跳出
                         var next = j + 1;
                         if ( next < col )
                         {
-                            if ( CheckExcelColIsNull (sheet , next) )
+                            if ( ExcelOverViewTableManager.Ins.CheckExcelColIsNull (sheet , next) )
                             {
                                 break;
                             }
@@ -105,19 +107,19 @@ namespace Excel2CSharp
                         }
                     }
 
-                    if ( CheckExcelColIsCanFilter (sheet , j) )
+                    if ( ExcelOverViewTableManager.Ins.CheckExcelColIsCanFilter (sheet , j) )
                     {
                         continue;
                     }
 
                     //获取变量名称
-                    var variableName = sheet.GetString (2 , j);
+                    var variableName = sheet.Rows [2] [j].GetString ();
 
                     //获取描述
-                    var desc = sheet.GetString (0 , j);
+                    var desc = sheet.Rows [0] [j].GetString ();
 
                     //获取类型名称
-                    var typeName = sheet.GetString (1 , j);
+                    var typeName = sheet.Rows [1] [j].GetString ();
 
                     //由于第一列比较特殊，这里手动替换第一列的内容
                     if ( j == 0 )
@@ -166,34 +168,14 @@ namespace Excel2CSharp
         }
 
         /// <summary>
-        /// 获取命名空间
+        /// 尝试获取配置脚本数据
         /// </summary>
+        /// <param name="className"></param>
+        /// <param name="configScriptCacheDataVo"></param>
         /// <returns></returns>
-        private string GetNameSpace (ExcelOverViewTableVo excelOverViewTable)
+        public bool TryGetConfigScriptCacheData (string className , out ConfigScriptCacheDataVo configScriptCacheDataVo)
         {
-            return excelOverViewTable.codeSource.Equals (0) ? ExcelConst.EXCEL_2_PROTOBUF_SCRIPT_NAMESPACE_1 : ExcelConst.EXCEL_2_PROTOBUF_SCRIPT_NAMESPACE_2;
-        }
-
-        /// <summary>
-        /// 检查Excel表该行是否为空
-        /// </summary>
-        /// <param name="sheet"></param>
-        /// <param name="col"></param>
-        /// <returns></returns>
-        private bool CheckExcelColIsNull (DataTable sheet , int col)
-        {
-            return string.IsNullOrEmpty (sheet.GetString (0 , col)) && string.IsNullOrEmpty (sheet.GetString (1 , col)) && string.IsNullOrEmpty (sheet.GetString (2 , col));
-        }
-
-        /// <summary>
-        /// 检查Excel表该行是否可以过滤掉
-        /// </summary>
-        /// <param name="sheet"></param>
-        /// <param name="col"></param>
-        /// <returns></returns>
-        private bool CheckExcelColIsCanFilter (DataTable sheet , int col)
-        {
-            return string.IsNullOrEmpty (sheet.GetString (1 , col)) || string.IsNullOrEmpty (sheet.GetString (2 , col));
+            return _configScriptDataDict.TryGetValue (className , out configScriptCacheDataVo);
         }
     }
 }

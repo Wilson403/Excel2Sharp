@@ -14,6 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="protobuf-net" Version="2.4.7" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.0" />
   </ItemGroup>
 
@@ -23,6 +24,9 @@
     </Reference>
     <Reference Include="ExcelDataReader.DataSet">
       <HintPath>Excel2CSharp\ThirdParty\ExcelDataReader.DataSet.dll</HintPath>
+    </Reference>
+    <Reference Include="ProtobufNetGen">
+      <HintPath>Excel2CSharp\ThirdParty\ProtobufNetGen.dll</HintPath>
     </Reference>
   </ItemGroup>
 

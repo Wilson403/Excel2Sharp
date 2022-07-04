@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Net.NetworkInformation;
 
 namespace Excel2CSharp
 {
     class Program
     {
-        private static Dictionary<string , DataSetExchangeTool> _cacheDataSetExchangeToolDict = new Dictionary<string , DataSetExchangeTool> ();
+        private static readonly List<DataSetExchangeTool> _cacheDataSetExchangeToolList = new List<DataSetExchangeTool> ();
         public static string configPath;
+        public static string csharpPath;
+        public static string protoFilePath;
 
         static void Main (string [] args)
         {
@@ -17,8 +18,10 @@ namespace Excel2CSharp
             System.Text.Encoding.RegisterProvider (System.Text.CodePagesEncodingProvider.Instance);
             ExcelOverViewTableManager.Ins.Init ("E:\\Luna_svn\\preview\\tools\\excel_json\\excel\\设置导出的表格.xlsx");
             configPath = Path.GetFullPath ("../../../Excel2Csharp/Config/");
-            string input;
+            csharpPath = Path.GetFullPath ("../../../Excel2Csharp/Generated/");
+            protoFilePath = "E:\\Luna_svn\\preview\\LunaProject\\LibraryZero\\BattleCheck\\proto";
 
+            string input;
             //命令处理循环
             while ( ( input = Console.ReadLine () ) != "exit" )
             {
@@ -43,12 +46,25 @@ namespace Excel2CSharp
         {
             var sw = new Stopwatch ();
             sw.Start ();
+            ExcelUtil.DelectDir (protoFilePath);
             for ( int i = 0 ; i < ExcelOverViewTableManager.Ins.GetExcelCount () ; i++ )
             {
-                new DataSetExchangeTool (ExcelOverViewTableManager.Ins.GetExcelSourceFileName (i));
+                _cacheDataSetExchangeToolList.Add (new DataSetExchangeTool (ExcelOverViewTableManager.Ins.GetExcelSourceFileName (i)));
             }
-            Proto2CSharpManager.Ins.Init ("E:\\Luna_svn\\preview\\LunaProject\\LibraryZero\\BattleCheck\\proto");
+            Proto2CSharpManager.Ins.Init ();
             Console.WriteLine ($"total time:{sw.ElapsedMilliseconds / 1000}s");
+        }
+
+        public static bool FindConfigScriptCacheDataVo (string className , ref ConfigScriptCacheDataVo configScriptCacheDataVo)
+        {
+            for ( int i = 0 ; i < _cacheDataSetExchangeToolList.Count ; i++ )
+            {
+                if ( _cacheDataSetExchangeToolList [i].TryGetConfigScriptCacheData (className , out configScriptCacheDataVo) ) 
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         /// <summary>

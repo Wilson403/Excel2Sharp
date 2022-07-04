@@ -28,7 +28,7 @@ namespace Excel2CSharp
         /// <summary>
         /// 配置数据的变量名称
         /// </summary>
-        public const string CONFIG_DATA_VARIABLE_NAME = "ConfigVo";
+        public const string CONFIG_DATA_VARIABLE_NAME = "ConfigVoes";
 
         /// <summary>
         /// 配置管理器脚本的名称

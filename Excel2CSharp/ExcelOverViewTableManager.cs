@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 
 namespace Excel2CSharp
 {
@@ -28,14 +29,14 @@ namespace Excel2CSharp
                     continue;
                 }
 
-                var sourcefileName = sheet.GetString (i , 0);
+                var sourcefileName = sheet.Rows [i] [0].GetString ();
                 var vo = new ExcelOverViewTableVo
                 {
-                    exportFileName = sheet.GetString (i , 2) ,
-                    sheetName = sheet.GetString (i , 1) ,
-                    sourcefileName = sheet.GetString (i , 0) ,
-                    codeSource = sheet.GetInt (i , 3) ,
-                    loadIndex = sheet.GetInt (i , 4)
+                    exportFileName = sheet.Rows [i] [2].GetString () ,
+                    sheetName = sheet.Rows [i] [1].GetString () ,
+                    sourcefileName = sheet.Rows [1] [0].GetString () ,
+                    codeSource = sheet.Rows [i] [3].GetInt () ,
+                    loadIndex = sheet.Rows [i] [4].GetInt ()
                 };
 
                 if ( _excelOverViewList.TryGetValue (sourcefileName , out var list) )
@@ -74,6 +75,28 @@ namespace Excel2CSharp
         public string GetExcelSourceFileName (int idx)
         {
             return _excelOverViewKeyArray [idx];
+        }
+
+        /// <summary>
+        /// 检查Excel表该行是否为空
+        /// </summary>
+        /// <param name="sheet"></param>
+        /// <param name="col"></param>
+        /// <returns></returns>
+        public bool CheckExcelColIsNull (DataTable sheet , int col)
+        {
+            return string.IsNullOrEmpty (sheet.Rows [0] [col].GetString ()) && string.IsNullOrEmpty (sheet.Rows [1] [col].GetString ()) && string.IsNullOrEmpty (sheet.Rows [2] [col].GetString ());
+        }
+
+        /// <summary>
+        /// 检查Excel表该行是否可以过滤掉
+        /// </summary>
+        /// <param name="sheet"></param>
+        /// <param name="col"></param>
+        /// <returns></returns>
+        public bool CheckExcelColIsCanFilter (DataTable sheet , int col)
+        {
+            return string.IsNullOrEmpty (sheet.Rows [1] [col].GetString ()) || string.IsNullOrEmpty (sheet.Rows [2] [col].GetString ());
         }
     }
 }
