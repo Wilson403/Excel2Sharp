@@ -48,7 +48,7 @@ namespace Excel2CSharp
 
             set.Process ();
             //ProtoBuf.Reflection.CSharpCodeGenerator.ClearTypeNames ();
-            var files = ProtoBuf.Reflection.CSharpCodeGenerator.Default.Generate (set);
+            var files = ProtoBuf.Reflection.CSharpCodeGenerator.Default.Generate (set , null , new Dictionary<string , string> (StringComparer.OrdinalIgnoreCase));
 
             //导出每一个CS文件
             foreach ( var file in files )
