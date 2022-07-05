@@ -14,6 +14,7 @@ namespace Excel2CSharp
         private List<string> _protoFiles;
         private float _processByteFileCount = 0;
         private int _allByteFileCount = 0;
+        private Assembly _csAssembly;
 
         public void Init ()
         {
@@ -50,21 +51,24 @@ namespace Excel2CSharp
             //ProtoBuf.Reflection.CSharpCodeGenerator.ClearTypeNames ();
             var files = ProtoBuf.Reflection.CSharpCodeGenerator.Default.Generate (set , null , new Dictionary<string , string> (StringComparer.OrdinalIgnoreCase));
 
+            string [] contents = new string [files.Count ()];
+            var index = 0;
+
             //导出每一个CS文件
             foreach ( var file in files )
             {
                 var path = Path.Combine (Program.csharpPath , file.Name);
                 File.WriteAllText (path , file.Text);
-                //ProtoBuf.Reflection.CSharpCodeGenerator.ClearTypeNames ();
+                contents [index++] = file.Text;
             }
-
+            _csAssembly = ExcelUtil.GenerateAssemblyFromCode (contents);
             ExportProtoData (ExcelConst.EXCEL_2_PROTOBUF_SCRIPT_NAMESPACE_1 , ExcelConst.ALL_CONFIG_HOT_CLASS_NAME , true);
         }
 
         private void ExportProtoData (string nameSpace , string allConfigClassName , bool isCreateMds = false)
         {
             //获取配置总表的类型
-            Type allConfigType = Type.GetType ($"{nameSpace}.{allConfigClassName}");
+            Type allConfigType = _csAssembly.GetType ($"{nameSpace}.{allConfigClassName}");
             if ( allConfigType == null )
             {
                 throw new Exception ($"not find allConfigType");
@@ -83,7 +87,6 @@ namespace Excel2CSharp
                 var propertyInfo = propertyInfos [i];
                 ProcessByteFile (propertyInfo , allConfigObj);
             }
-            Console.WriteLine ($"ExportProtoData Done");
         }
 
         /// <summary>
@@ -117,10 +120,29 @@ namespace Excel2CSharp
                 }
                 else
                 {
+                    ExportByteFile (excelData , propertyInfo.Name + ".bytes");
                     //给汇总对象赋值，将用于生成汇总二进制文件
                     propertyInfo.SetValue (allConfigObj , excelData);
                 }
                 _processByteFileCount++;
+            }
+        }
+
+        /// <summary>
+        /// 导出二进制文件
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="fileName"></param>
+        private void ExportByteFile (object data , string fileName)
+        {
+            using ( MemoryStream ms = new MemoryStream () )
+            {
+                ProtoBuf.Serializer.Serialize (ms , data);
+                FileStream fs = File.Create (Path.Combine (Program.csharpPath , fileName));
+                BinaryWriter bw = new BinaryWriter (fs);
+                bw.Write (ms.ToArray ());
+                bw.Close ();
+                fs.Close ();
             }
         }
 
@@ -141,10 +163,10 @@ namespace Excel2CSharp
             var nameSpace = ExcelConst.EXCEL_2_PROTOBUF_SCRIPT_NAMESPACE_1;
 
             //获取这个配置数据结构（只包含值对象的实例）定义类型
-            Type configVoType = Type.GetType ($"{nameSpace}.{className}{ExcelConst.CONFIG_VALUEOBJECT_MESSAGE_END_NAME}");
+            Type configVoType = _csAssembly.GetType ($"{nameSpace}.{className}{ExcelConst.CONFIG_VALUEOBJECT_MESSAGE_END_NAME}");
 
             //获取这个配置数据定义类型
-            Type configDataType = Type.GetType ($"{nameSpace}.{className}{ExcelConst.CONFIG_DATA_MESSAGE_END_NAME}");
+            Type configDataType = _csAssembly.GetType ($"{nameSpace}.{className}{ExcelConst.CONFIG_DATA_MESSAGE_END_NAME}");
 
             if ( configVoType == null || configDataType == null )
             {

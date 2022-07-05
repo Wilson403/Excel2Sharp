@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 
 namespace Excel2CSharp
 {
@@ -52,14 +54,14 @@ namespace Excel2CSharp
                 _cacheDataSetExchangeToolList.Add (new DataSetExchangeTool (ExcelOverViewTableManager.Ins.GetExcelSourceFileName (i)));
             }
             Proto2CSharpManager.Ins.Init ();
-            Console.WriteLine ($"total time:{sw.ElapsedMilliseconds / 1000}s");
+            ConsoleHelper.Ins.WriteWarningLine ($"total time:{sw.ElapsedMilliseconds / 1000}s");
         }
 
         public static bool FindConfigScriptCacheDataVo (string className , ref ConfigScriptCacheDataVo configScriptCacheDataVo)
         {
             for ( int i = 0 ; i < _cacheDataSetExchangeToolList.Count ; i++ )
             {
-                if ( _cacheDataSetExchangeToolList [i].TryGetConfigScriptCacheData (className , out configScriptCacheDataVo) ) 
+                if ( _cacheDataSetExchangeToolList [i].TryGetConfigScriptCacheData (className , out configScriptCacheDataVo) )
                 {
                     return true;
                 }

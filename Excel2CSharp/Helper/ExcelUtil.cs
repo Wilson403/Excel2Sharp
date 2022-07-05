@@ -1,5 +1,11 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.Emit;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -7,6 +13,72 @@ namespace Excel2CSharp
 {
     public class ExcelUtil
     {
+        /// <summary>
+        /// 动态编译
+        /// </summary>
+        /// <param name="code">需要动态编译的代码</param>
+        /// <returns>动态生成的程序集</returns>
+        public static Assembly GenerateAssemblyFromCode (string[] codes)
+        {
+            Assembly assembly = null;
+
+            // 随机程序集名称
+            string assemblyName = Path.GetRandomFileName ();
+
+            List<MetadataReference> references = new List<MetadataReference> ();
+            for ( int i = 0 ; i < AppDomain.CurrentDomain.GetAssemblies ().Length ; i++ )
+            {
+                var x = AppDomain.CurrentDomain.GetAssemblies () [i];
+                if ( !string.IsNullOrEmpty (x.Location) )
+                {
+                    try
+                    {
+                        references.Add (MetadataReference.CreateFromFile (x.Location));
+                    }
+                    catch ( Exception e )
+                    {
+                        ConsoleHelper.Ins.WriteErrorLine ($"Location:{x.Location}\n{e}");
+                    }
+                }
+            }
+
+            //丛代码中转换表达式树
+            SyntaxTree [] syntaxTrees = new SyntaxTree [codes.Length];
+            for ( int i = 0 ; i < codes.Length ; i++ )
+            {
+                syntaxTrees [i] = CSharpSyntaxTree.ParseText (codes [i]);
+            }
+
+            // 创建编译对象
+            CSharpCompilation compilation = CSharpCompilation.Create (assemblyName , syntaxTrees , references , new CSharpCompilationOptions (OutputKind.DynamicallyLinkedLibrary));
+
+            using ( var ms = new MemoryStream () )
+            {
+                // 将编译好的IL代码放入内存流
+                EmitResult result = compilation.Emit (ms);
+
+                // 编译失败，提示
+                if ( !result.Success )
+                {
+                    IEnumerable<Diagnostic> failures = result.Diagnostics.Where (diagnostic =>
+                                 diagnostic.IsWarningAsError ||
+                                 diagnostic.Severity == DiagnosticSeverity.Error);
+                    foreach ( Diagnostic diagnostic in failures )
+                    {
+                        Console.Error.WriteLine ("{0}: {1}" , diagnostic.Id , diagnostic.GetMessage ());
+                    }
+                }
+                else
+                {
+                    // 编译成功，从内存中加载编译好的程序集
+                    ms.Seek (0 , SeekOrigin.Begin);
+                    assembly = Assembly.Load (ms.ToArray ());
+                }
+            }
+            return assembly;
+        }
+
+
         /// <summary>
         /// 获取类型名称
         /// </summary>
