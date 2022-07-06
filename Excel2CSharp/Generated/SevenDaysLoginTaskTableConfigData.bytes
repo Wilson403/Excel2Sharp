@@ -1,427 +1,0 @@
-
-R"累计登录1天*
-login_days0Bresource_tableHfP�Zresource_table`�hp
-a"完成悬赏任务1次*finish_reward_task0Bresource_tableHoP��Zresource_table`�hp
-W"领取战利品2次*take_spoils0Bresource_tableHoP��Zresource_table`�hp
-_"招募英雄10名*summon_hero_at_yuegui0
-Bresource_tableHoPІZresource_table`�h2p
-Z"商店购买物品1次*normal_shop0Bresource_tableHoPІZresource_table`�h
-p
-V"快速挂机2次*quick_hang_up0Bresource_tableHoPІZresource_table`�h
-p
-X"购买月卡1次*buy_month_card0Bresource_tableHfP�Zresource_table`�h2px
-b"1个英雄达到80级*top_one_hero_level0PBresource_tableHoPІZresource_table`�h
-px
-Q	"加入公会1次*
-guild_join0B
-item_tableHޜPZresource_table`�hpx
-[
-"参加竞技场1次*challenge_arena0Bresource_tableHoPІZresource_table`�h
-p
-^"通关第1章第5关*pass_chapter_level0��=B
-item_tableH�NPZresource_table`�h
-px
-_"通关第2章第10关*pass_chapter_level0��=B
-item_tableH�NPZresource_table`�h
-px
-_"通关第3章第20关*pass_chapter_level0��=B
-item_tableH�NPZresource_table`�h
-px
-_"通关第4章第20关*pass_chapter_level0��=B
-item_tableH�NPZresource_table`�h
-px
-_"通关第4章第30关*pass_chapter_level0��=B
-item_tableH�NP
-Zresource_table`�h
-px
-\"通关无尽之塔第10层*
-pass_tower0
-8B
-item_tableH�NPZresource_table`�h
-px
-\"通关无尽之塔第30层*
-pass_tower08B
-item_tableH�NPZresource_table`�h
-px
-\"通关无尽之塔第50层*
-pass_tower028B
-item_tableH�NP
-Zresource_table`�h
-px
-\"通关无尽之塔第60层*
-pass_tower0<8B
-item_tableH�NP
-Zresource_table`�h
-px
-]"通关无尽之塔第70层*
-pass_tower0F8B
-item_tableHҜP
-Zresource_table`�h
-px
-a"获得1个蓝色品质英雄*gain_hero_stat08B
-item_tableHŜPZresource_table`�hp
-a"获得3个蓝色品质英雄*gain_hero_stat08B
-item_tableHŜPZresource_table`�hp
-a"获得8个蓝色品质英雄*gain_hero_stat08B
-item_tableHŜPZresource_table`�h
-p
-a"获得1个紫色品质英雄*gain_hero_stat08B
-item_tableHŜPZresource_table`�h
-p
-a"获得2个紫色品质英雄*gain_hero_stat08B
-item_tableHŜPZresource_table`�h
-p
-e"共有1个英雄达到40级*hero_levels_reach08(B
-item_tableHŜPZresource_table`�hpx
-e"共有3个英雄达到60级*hero_levels_reach08<B
-item_tableHŜPZresource_table`�h
-px
-e"共有5个英雄达到60级*hero_levels_reach08<B
-item_tableHŜPZresource_table`�hpx
-e"共有5个英雄达到80级*hero_levels_reach08PB
-item_tableHŜPZresource_table`�hpx
-f"共有3个英雄达到100级*hero_levels_reach08dB
-item_tableHŜPZresource_table`�hpx
-R"累计登录2天*
-login_days0Bresource_tableHfP�Zresource_table`�hp
-_ "完成悬赏任务2次*finish_reward_task0Bresource_tableHfP2Zresource_table`�hp
-U!"领取战利品5次*take_spoils0Bresource_tableHfP2Zresource_table`�hp
-V""参加水晶幻境1次*	play_maze0Bresource_tableHfPdZresource_table`�h
-p
-X#"商店购买物品2次*normal_shop0Bresource_tableHfPdZresource_table`�h
-p
-T$"快速挂机2次*quick_hang_up0Bresource_tableHfPdZresource_table`�h
-p
-Q%"充值1次6元*recharge08�Bresource_tableHfP�Zresource_table`�h2p
-]&"招募英雄10名*summon_hero_at_yuegui0
-Bresource_tableHfPdZresource_table`�h2p
-`'"通关第5章第20关*pass_chapter_level0ܫ=B
-item_tableHߜPZresource_table`�h
-px
-`("通关第5章第30关*pass_chapter_level0�=B
-item_tableHŜPZresource_table`�h
-px
-`)"通关第6章第10关*pass_chapter_level0��=B
-item_tableHŜPZresource_table`�h
-px
-`*"通关第6章第20关*pass_chapter_level0ĳ=B
-item_tableHŜPZresource_table`�h
-px
-`+"通关第6章第30关*pass_chapter_level0γ=B
-item_tableHŜPZresource_table`�h
-px
-],"通关无尽之塔第70层*
-pass_tower0F8B
-item_tableHŜPZresource_table`�h
-px
-]-"通关无尽之塔第80层*
-pass_tower0P8B
-item_tableHŜPZresource_table`�h
-px
-]."通关无尽之塔第90层*
-pass_tower0Z8B
-item_tableHŜPZresource_table`�h
-px
-f/""持有1件绿色品质以上装备*get_eq_stat08B
-item_tableH��PZresource_table`�hpx
-f0""持有3件绿色品质以上装备*get_eq_stat08B
-item_tableH��PZresource_table`�h
-px
-g1"#持有10件绿色品质以上装备*get_eq_stat0
-8B
-item_tableH��PZresource_table`�h
-px
-g2"#持有20件绿色品质以上装备*get_eq_stat08B
-item_tableH��PZresource_table`�h
-px
-f3""持有1件蓝色品质以上装备*get_eq_stat08B
-item_tableH��PZresource_table`�h
-px
-f4""持有2件蓝色品质以上装备*get_eq_stat08B
-item_tableH��PZresource_table`�h
-px
-f5""持有4件蓝色品质以上装备*get_eq_stat08B
-item_tableH��PZresource_table`�h
-px
-f6""持有6件蓝色品质以上装备*get_eq_stat08B
-item_tableH��PZresource_table`�hpx
-R7"累计登录3天*
-login_days0Bresource_tableHfP�Zresource_table`�hp
-]8"完成悬赏任务2次*finish_reward_task0B
-item_tableHĜPZresource_table`�hp
-S9"领取战利品5次*take_spoils0B
-item_tableHĜPZresource_table`�hp
-T:"参加水晶幻境1次*	play_maze0B
-item_tableHĜPZresource_table`�h
-p
-V;"商店购买物品2次*normal_shop0B
-item_tableHĜPZresource_table`�h
-p
-R<"快速挂机2次*quick_hang_up0B
-item_tableHĜPZresource_table`�h
-p
-Q="充值1次6元*recharge08�Bresource_tableHfP�Zresource_table`�h2p
-[>"招募英雄10名*summon_hero_at_yuegui0
-B
-item_tableHĜPZresource_table`�h2p
-b?"通关第6章第25关*pass_chapter_level0ɳ=Bresource_tableHfPdZresource_table`�h
-px
-b@"通关第6章第30关*pass_chapter_level0γ=Bresource_tableHfPdZresource_table`�h
-px
-bA"通关第6章第35关*pass_chapter_level0ӳ=Bresource_tableHfPdZresource_table`�h
-px
-bB"通关第6章第40关*pass_chapter_level0س=Bresource_tableHfPdZresource_table`�h
-px
-_C"通关无尽之塔第95层*
-pass_tower0_8Bresource_tableHfPdZresource_table`�h
-px
-`D"通关无尽之塔第100层*
-pass_tower0d8Bresource_tableHfPdZresource_table`�h
-px
-`E"通关无尽之塔第110层*
-pass_tower0n8Bresource_tableHfPdZresource_table`�h
-px
-`F"通关无尽之塔第120层*
-pass_tower0x8Bresource_tableHfPdZresource_table`�h
-px
-WG"参加竞技场3次*challenge_arena0B
-item_tableHŜPZresource_table`�hp
-WH"参加竞技场6次*challenge_arena0B
-item_tableHŜPZresource_table`�h
-p
-XI"参加竞技场10次*challenge_arena0
-B
-item_tableHŜPZresource_table`�h
-p
-XJ"参加竞技场14次*challenge_arena0B
-item_tableHŜPZresource_table`�h
-p
-_K"竞技场积分达到1100分*arena_score0�B
-item_tableHŜPZresource_table`�h
-px
-_L"竞技场积分达到1200分*arena_score0�	B
-item_tableHŜPZresource_table`�h
-px
-_M"竞技场积分达到1300分*arena_score0�
-B
-item_tableHŜPZresource_table`�h
-px
-_N"竞技场积分达到1500分*arena_score0�B
-item_tableHŜPZresource_table`�hpx
-RO"累计登录4天*
-login_days0Bresource_tableHfP�Zresource_table`�hp
-aP"完成悬赏任务2次*finish_reward_task0Bresource_tableHoPІZresource_table`�hp
-WQ"领取战利品5次*take_spoils0Bresource_tableHoPІZresource_table`�hp
-XR"参加水晶幻境1次*	play_maze0Bresource_tableHoP��Zresource_table`�h
-p
-ZS"商店购买物品2次*normal_shop0Bresource_tableHoP��Zresource_table`�h
-p
-VT"快速挂机2次*quick_hang_up0Bresource_tableHoP��Zresource_table`�h
-p
-QU"充值1次6元*recharge08�Bresource_tableHfP�Zresource_table`�h2p
-_V"招募英雄10名*summon_hero_at_yuegui0
-Bresource_tableHoP��Zresource_table`�h2p
-aW"通关第7章第5关*pass_chapter_level0��=Bresource_tableHfPdZresource_table`�h
-px
-bX"通关第7章第10关*pass_chapter_level0��=Bresource_tableHfPdZresource_table`�h
-px
-bY"通关第7章第15关*pass_chapter_level0��=Bresource_tableHfPdZresource_table`�h
-px
-bZ"通关第7章第20关*pass_chapter_level0��=Bresource_tableHfPdZresource_table`�h
-px
-b["通关第7章第25关*pass_chapter_level0��=Bresource_tableHfPdZresource_table`�h
-px
-`\"通关无尽之塔第125层*
-pass_tower0}8Bresource_tableHfPdZresource_table`�h
-px
-a]"通关无尽之塔第130层*
-pass_tower0�8Bresource_tableHfPdZresource_table`�h
-px
-a^"通关无尽之塔第140层*
-pass_tower0�8Bresource_tableHfPdZresource_table`�h
-px
-Y_"累计消耗1000钻石*sub_diamond0�B
-item_tableHӜPZresource_table`�hpx
-Y`"累计消耗2000钻石*sub_diamond0�B
-item_tableHӜPZresource_table`�h
-px
-Ya"累计消耗4000钻石*sub_diamond0�B
-item_tableHӜPZresource_table`�h
-px
-Yb"累计消耗6000钻石*sub_diamond0�.B
-item_tableHӜPZresource_table`�h
-px
-Yc"累计消耗8000钻石*sub_diamond0�>B
-item_tableHӜPZresource_table`�h
-px
-Zd"累计消耗10000钻石*sub_diamond0�NB
-item_tableHӜPZresource_table`�h
-px
-Ze"累计消耗12000钻石*sub_diamond0�]B
-item_tableHӜPZresource_table`�h
-px
-Zf"累计消耗14000钻石*sub_diamond0�mB
-item_tableHӜPZresource_table`�hpx
-Rg"累计登录5天*
-login_days0Bresource_tableHfP�Zresource_table`�hp
-_h"完成悬赏任务2次*finish_reward_task0Bresource_tableHfP2Zresource_table`�hp
-Ui"领取战利品5次*take_spoils0Bresource_tableHfP2Zresource_table`�hp
-Vj"参加水晶幻境1次*	play_maze0Bresource_tableHfPdZresource_table`�h
-p
-Xk"商店购买物品2次*normal_shop0Bresource_tableHfPdZresource_table`�h
-p
-Tl"快速挂机2次*quick_hang_up0Bresource_tableHfPdZresource_table`�h
-p
-Qm"充值1次6元*recharge08�Bresource_tableHfP�Zresource_table`�h2p
-]n"招募英雄10名*summon_hero_at_yuegui0
-Bresource_tableHfPdZresource_table`�h2p
-bo"通关第7章第25关*pass_chapter_level0��=Bresource_tableHfPdZresource_table`�h
-px
-cp"通关第7章第30关*pass_chapter_level0��=Bresource_tableHfP�Zresource_table`�hpx
-cq"通关第7章第35关*pass_chapter_level0��=Bresource_tableHfP�Zresource_table`�hpx
-ar"通关无尽之塔第140层*
-pass_tower0�8Bresource_tableHfPdZresource_table`�h
-px
-as"通关无尽之塔第145层*
-pass_tower0�8Bresource_tableHfPdZresource_table`�h
-px
-at"通关无尽之塔第150层*
-pass_tower0�8Bresource_tableHfPdZresource_table`�h
-px
-au"通关无尽之塔第155层*
-pass_tower0�8Bresource_tableHfPdZresource_table`�h
-px
-av"通关无尽之塔第160层*
-pass_tower0�8Bresource_tableHfPdZresource_table`�h
-px
-Tw"进阶英雄1名*advanced_hero0B
-item_tableH��P2Zresource_table`�hpx
-Tx"进阶英雄2名*advanced_hero0B
-item_tableH��PdZresource_table`�h
-px
-Ty"进阶英雄3名*advanced_hero0B
-item_tableH��PdZresource_table`�h
-px
-Tz"进阶英雄4名*advanced_hero0B
-item_tableH��PdZresource_table`�h
-px
-T{"进阶英雄5名*advanced_hero0B
-item_tableH��PdZresource_table`�h
-px
-T|"进阶英雄6名*advanced_hero0B
-item_tableH��PdZresource_table`�h
-px
-T}"进阶英雄7名*advanced_hero0B
-item_tableH��PdZresource_table`�h
-px
-U~"进阶英雄8名*advanced_hero0B
-item_tableH��P�Zresource_table`�hpx
-R"累计登录6天*
-login_days0Bresource_tableHfP�Zresource_table`�hp
-`�"完成悬赏任务2次*finish_reward_task0Bresource_tableHfP2Zresource_table`�hp
-V�"领取战利品5次*take_spoils0Bresource_tableHfP2Zresource_table`�hp
-W�"参加水晶幻境1次*	play_maze0Bresource_tableHfPdZresource_table`�h
-p
-Y�"商店购买物品2次*normal_shop0Bresource_tableHfPdZresource_table`�h
-p
-U�"快速挂机2次*quick_hang_up0Bresource_tableHfPdZresource_table`�h
-p
-R�"充值1次6元*recharge08�Bresource_tableHfP�Zresource_table`�h2p
-^�"招募英雄10名*summon_hero_at_yuegui0
-Bresource_tableHfPdZresource_table`�h2p
-a�"通关第7章第36关*pass_chapter_level0��=B
-item_tableH��PZresource_table`�h
-px
-a�"通关第7章第38关*pass_chapter_level0��=B
-item_tableH��PZresource_table`�hpx
-a�"通关第7章第40关*pass_chapter_level0��=B
-item_tableH��PZresource_table`�hpx
-`�"通关无尽之塔第162层*
-pass_tower0�8B
-item_tableH��PZresource_table`�h
-px
-`�"通关无尽之塔第164层*
-pass_tower0�8B
-item_tableH��PZresource_table`�h
-px
-`�"通关无尽之塔第166层*
-pass_tower0�8B
-item_tableH��PZresource_table`�h
-px
-`�"通关无尽之塔第168层*
-pass_tower0�8B
-item_tableH��PZresource_table`�h
-px
-`�"通关无尽之塔第170层*
-pass_tower0�8B
-item_tableH��PZresource_table`�h
-px
-`�"累计花费10000000金币*	sub_coins0���Bresource_tableHfP2Zresource_table`�hpx
-`�"累计花费20000000金币*	sub_coins0���	Bresource_tableHfPdZresource_table`�h
-px
-`�"累计花费22000000金币*	sub_coins0��
-Bresource_tableHfPdZresource_table`�h
-px
-`�"累计花费24000000金币*	sub_coins0��Bresource_tableHfPdZresource_table`�h
-px
-`�"累计花费26000000金币*	sub_coins0���Bresource_tableHfPdZresource_table`�h
-px
-`�"累计花费30000000金币*	sub_coins0���Bresource_tableHfPdZresource_table`�h
-px
-`�"累计花费35000000金币*	sub_coins0���Bresource_tableHfPdZresource_table`�h
-px
-a�"累计花费40000000金币*	sub_coins0���Bresource_tableHfP�Zresource_table`�hpx
-S�"累计登录7天*
-login_days0Bresource_tableHfP�Zresource_table`�hp
-`�"完成悬赏任务2次*finish_reward_task0Bresource_tableHfP2Zresource_table`�hp
-V�"领取战利品5次*take_spoils0Bresource_tableHfP2Zresource_table`�hp
-W�"参加水晶幻境1次*	play_maze0Bresource_tableHfPdZresource_table`�h
-p
-Y�"商店购买物品2次*normal_shop0Bresource_tableHfPdZresource_table`�h
-p
-U�"快速挂机2次*quick_hang_up0Bresource_tableHfPdZresource_table`�h
-p
-R�"充值1次6元*recharge08�Bresource_tableHfP�Zresource_table`�h2p
-^�"招募英雄10名*summon_hero_at_yuegui0
-Bresource_tableHfPdZresource_table`�h2p
-`�"通关第8章第5关*pass_chapter_level0��=B
-item_tableHҜPZresource_table`�h
-px
-a�"通关第8章第10关*pass_chapter_level0��=B
-item_tableHҜPZresource_table`�hpx
-a�"通关第8章第15关*pass_chapter_level0��=B
-item_tableHҜPZresource_table`�hpx
-`�"通关无尽之塔第172层*
-pass_tower0�8B
-item_tableHҜPZresource_table`�h
-px
-`�"通关无尽之塔第174层*
-pass_tower0�8B
-item_tableHҜPZresource_table`�h
-px
-`�"通关无尽之塔第176层*
-pass_tower0�8B
-item_tableHҜPZresource_table`�h
-px
-`�"通关无尽之塔第178层*
-pass_tower0�8B
-item_tableHҜPZresource_table`�h
-px
-`�"通关无尽之塔第180层*
-pass_tower0�8B
-item_tableHҜPZresource_table`�h
-px
-_�"战队达到100000战力*fight_point0��Bresource_tableHfP2Zresource_table`�hpx
-_�"战队达到150000战力*fight_point0�	Bresource_tableHfPdZresource_table`�h
-px
-_�"战队达到200000战力*fight_point0��Bresource_tableHfPdZresource_table`�h
-px
-_�"战队达到300000战力*fight_point0�Bresource_tableHfPdZresource_table`�h
-px
-_�"战队达到400000战力*fight_point0��Bresource_tableHfPdZresource_table`�h
-px
-_�"战队达到500000战力*fight_point0��Bresource_tableHfPdZresource_table`�h
-px
-_�"战队达到550000战力*fight_point0��!Bresource_tableHfPdZresource_table`�h
-px
-`�"战队达到600000战力*fight_point0��$Bresource_tableHfP�Zresource_table`�hpx

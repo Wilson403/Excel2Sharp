@@ -138,7 +138,7 @@ namespace Excel2CSharp
             using ( MemoryStream ms = new MemoryStream () )
             {
                 ProtoBuf.Serializer.Serialize (ms , data);
-                FileStream fs = File.Create (Path.Combine (Program.csharpPath , fileName));
+                FileStream fs = File.Create (Path.Combine (Program.byteFilePath , fileName));
                 BinaryWriter bw = new BinaryWriter (fs);
                 bw.Write (ms.ToArray ());
                 bw.Close ();
@@ -204,7 +204,7 @@ namespace Excel2CSharp
                     //遇到无效的行就跳出
                     if ( col > 0 )
                     {
-                        if ( string.IsNullOrEmpty (sheet.Rows [i] [1].GetString ()) )
+                        if ( string.IsNullOrEmpty (sheet.Rows [i] [0].GetString ()) )
                         {
                             break;
                         }

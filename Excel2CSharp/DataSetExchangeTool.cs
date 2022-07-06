@@ -20,7 +20,7 @@ namespace Excel2CSharp
         public DataSetExchangeTool (string sourcefileName)
         {
             _sourcefileName = sourcefileName;
-            _excel2DataSet = new Excel2DataSet ($"E:\\Luna_svn\\preview\\tools\\excel_json\\excel\\excel_config\\{sourcefileName}.xlsx");
+            _excel2DataSet = new Excel2DataSet (Encoding.UTF8.GetString (Encoding.Default.GetBytes (Path.Combine (Program.excelDir , $"{sourcefileName}.xlsx")))); //含中文的路径
             ExportProtoFile ();
         }
 
@@ -158,7 +158,7 @@ namespace Excel2CSharp
                 //结束
                 sb.Append ("}\n");
 
-                FileStream fs = File.Create ("E:\\Luna_svn\\preview\\LunaProject\\LibraryZero\\BattleCheck\\proto" + "/" + configScriptDataVo.exportFileName + ".proto");
+                FileStream fs = File.Create (Path.Combine (Program.protoFilePath , $"{configScriptDataVo.exportFileName}.proto"));
                 char [] data = sb.ToString ().ToCharArray ();
                 BinaryWriter bw = new BinaryWriter (fs);
                 bw.Write (data);

@@ -1,9 +1,7 @@
-﻿using Microsoft.CodeAnalysis;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 
 namespace Excel2CSharp
 {
@@ -13,32 +11,62 @@ namespace Excel2CSharp
         public static string configPath;
         public static string csharpPath;
         public static string protoFilePath;
+        public static string byteFilePath;
+        public static string excelOverviewPath;
+        public static string excelDir;
+
 
         static void Main (string [] args)
         {
-            Console.WriteLine ("Excel2CSharp - Input \"help\" to view command");
             System.Text.Encoding.RegisterProvider (System.Text.CodePagesEncodingProvider.Instance);
-            ExcelOverViewTableManager.Ins.Init ("E:\\Luna_svn\\preview\\tools\\excel_json\\excel\\设置导出的表格.xlsx");
-            configPath = Path.GetFullPath ("../../../Excel2Csharp/Config/");
-            csharpPath = Path.GetFullPath ("../../../Excel2Csharp/Generated/");
-            protoFilePath = "E:\\Luna_svn\\preview\\LunaProject\\LibraryZero\\BattleCheck\\proto";
+            configPath = Path.Combine (Environment.CurrentDirectory , "Config");
 
-            string input;
-            //命令处理循环
-            while ( ( input = Console.ReadLine () ) != "exit" )
+            for ( int i = 0 ; i < args.Length ; i++ )
             {
-                switch ( input )
+                string arg = args [i];
+                string lhs = arg;
+                string rhs = "";
+
+                if ( lhs.StartsWith ("--byte_out")
+                    || lhs.StartsWith ("--csharp_out")
+                    || lhs.StartsWith ("--proto_out")
+                    || lhs.StartsWith ("--excelOver_out")
+                    || lhs.StartsWith ("--excel_out") )
                 {
-                    case "start":
+                    var arr = lhs.Split ("=");
+                    lhs = arr [0];
+                    rhs = arr [1];
+                }
+
+                switch ( lhs )
+                {
+                    case "--byte_out":
+                        byteFilePath = rhs;
+                        break;
+
+                    case "--csharp_out":
+                        csharpPath = rhs;
+                        break;
+
+                    case "--proto_out":
+                        protoFilePath = rhs;
+                        break;
+
+                    case "--excelOver_out":
+                        excelOverviewPath = rhs;
+                        break;
+
+                    case "--excel_out":
+                        excelDir = rhs;
+                        break;
+
+                    case "--start":
+                        ExcelOverViewTableManager.Ins.Init (Path.Combine (excelOverviewPath , "设置导出的表格.xlsx"));
                         Start ();
                         break;
 
-                    case "help":
-                        PrintHelpInfo ();
-                        break;
-
                     default:
-                        Console.WriteLine ($"未找到的命令:{input}");
+                        ConsoleHelper.Ins.WriteErrorLine ($"未处理的参数命令{lhs}");
                         break;
                 }
             }
@@ -67,17 +95,6 @@ namespace Excel2CSharp
                 }
             }
             return false;
-        }
-
-        /// <summary>
-        /// 打印帮助信息
-        /// </summary>
-        static void PrintHelpInfo ()
-        {
-            Console.WriteLine ("=======================");
-            Console.WriteLine ("start: 执行代码");
-            Console.WriteLine ("exit: 关闭控制台程序");
-            Console.WriteLine ("=======================");
         }
     }
 }

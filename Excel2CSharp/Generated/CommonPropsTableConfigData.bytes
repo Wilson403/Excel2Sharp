@@ -1,264 +1,0 @@
-
-def_role10009,10025
-def_lv1
-	def_quality5
-,#time_scale_while_play_special_skill0.1
-power_increase_killed200
-MountScaleX1
-MountScaleY1
-hide_frame_after_second3
-sp_breakthrough_lv10
-)!normal_breakthrough_lv_need_count20
-breakthroughed_lv_count10
-
-crist_rate1.5
-"strengthen_gold_cost_rate100
-;!hero_max_level'100,100,100,100,120,140,160,180,200,240
-O"fast_hang_up_cost80,50,80,100,100,200,200,200,400,400,600,600,800,800,1000
-)#monster_able_attack_while_testFalse
-<$def_enemy_hero_while_test10006;10008;10009;10010;10012
-%skill_movie_ableFALSE
-&create_guild0
-'create_guild_res102,500
-)("general_arena_free_challange_count2
-)enable_guidetrue
-*guildboss_beginning2
-+keep_board_while_trigger2
-œ,pvp_buy_priceˆ75,75,75,100,100,100,125,125,125,150,150,150,175,175,175,200,200,200,225,225,225,250,250,250,275,275,275,300,300,300,325,325,325,350,350
-B-enable_shop150,50,100,100,150,150,200,200,300,300,400,400,500
-F.
-guild_shop650,100,200,400,400,600,600,800,800,1000,1000,1000,1000
-,/	soul_shop1000,1000,1000,2000,2000,2000
-,0	mazz_shop1000,1000,1000,2000,2000,2000
-71guildcopy_num$30,50,80,100,100,150,150,200,200,300
-:2guildcopy_attackreward203,50,103,30,101,10000,200,40
- 3guildcopy_mvpreward102,300
-$4guildcopy_Initializationtimes5
-5pvp_win_reward70000
-(6gardenship_reward90001,90002,90003
-P7garden_storeref_value550,100,200,300,400,500,600,700,800,900,1000,1100,1200
-8garden_slot_num3
-9garden_slot_time224
-:garden_slot_time348
-;garden_train_time8
-!<garden_platinum_buytimes300
-_=garden_platinum_priceD50,100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500
-$>waiting_time_while_net_broken6
-?pet_open_level101
-@pet_visible_level101
-TAprops_inc_while_race_active36,3000,7,3000,8,3000,9,3000,10,3000,11,3000,12,3000
-Bgarden_nest10803
-Cpet_adv_itemid20046
-$Dmazz_reward5001,5002,5003,5004
-$Emazz_open_reward6003,6001,6002
-(Fmazz_open_buff700301,700101,700201
-Gmount_visible_level100
-Hmount_open_level121
-%Iskill_audio_voice_base_scale0.3
-Jgarden_ship_reftime6
-Kgarden_ship_clicktime1
-Lmax_hero_bag_buy_num30
-Mhero_bag_buy_price50
-Nhero_bag_add5
-%Opower_saving_mode_brightness0.5
-Pnormal_mode_brightness0.3
-Qbase_hit_rate1
-&Rgarden_handbook__unlock_dianum20
-Sdecompose_soul10
-Tdecompose_good5000
-Udecompose_dust5
-Vcal_tag2021.03.03_15.58
-ŒWcard_pool_oney-30005,10003,10046,10047,10036,10004,10003,10009,10049,10050,10035,10001,10004,10050,10025,-30006,10054,10025,10002,10052
-CXbook_buy_price/600,800,1000,1200,1400,1600,1800,2000,2200,2400
-Ygarden_platinum_limit300
-Zgarden_platinum_recover13
- [garden_toolstore_buytime10
-!\garden_buildstore_buytime10
-]garden_petstore_buytime10
-%^garden_shop_petequip_size1,0,15
-&_garden_shop_petlvstar_size1,0,15
-)`garden_shop_buy_petequip_size2,0,70
-*agarden_shop_buy_petlvstar_size2,0,70
-!bchat_number_continuity_sum7
-bcchat_private_tipsKè¯¥çŽ©å®¶ä¸ºå±é™©ç”¨æˆ·ï¼Œåˆ‡å‹¿è½»æ˜“åŠ è”ç³»æ–¹å¼ï¼Œè°¨é˜²ä¸Šå½“å—éª—
-dchat_lv_disparity10
-gmax_speak_frame_count2
-#hspeak_frame_max_keep_time2000
-istart_speak_able_count2
-Mjisland_buy_price750,50,75,75,100,100,150,150,200,200,250,250,300,300,350
-lta_imsg_cache_max_count20
-&mguild_unit_fight_time_limit60000
-ngarden_ship_time7200
-#ogarden_vip3_extrabox	11001,100
-#pgarden_vip8_extrabox	11002,100
-$qgarden_vip13_extrabox	11003,100
-$rdebug_platformxiaomi,ios,NBSDK
-sgardeb_refcost_first50
-tGarden_buy_time1
-ugarden_freeref_time5
-vshop_freeref_time0
-wvip_shop_freeref_time5
-xheart_beat_limit15000
-Aymount_summon_lv_reqnum%120000,390000,1520000,4220000,9120000
-zexplore_mutual_reward5
-{campfire_party_time3
-%|tower_quickfight_condition30,30
-}guild_boss_contribute50
-~campfire_s_time_num5,20
-#campfire_party_stuff_price300
-€forest_dice_buy50
-explore_special_event3
-‚exchange_s_to_g2000
-ƒexplore_mutual_time20
-"„campfire_settlement_Stime80
-"…campfire_settlement_Ltime90
-†buy_gold_double0.05
-‡chat_seed_cd10
-ˆdice_exp10
-‰dice_provide5
-Šdice_top_limit10
-‹forest_shop_life120
-!Œforest_event_mutual_limit5
-guild_boss_station2
-Žtheme_boss_station11
-"full_hero_pool8000,1500,500
-$race_pool_lianbang0,9000,1000
-!‘race_pool_buluo0,9000,1000
-!’race_pool_junlv0,9000,1000
-“friend_pool9000,750,250
-”hero_reset_freetime5
-•html-size[size-large]20
- –html-size[ql-size-huge]22
-!—html-size[ql-size-small]16
-˜html-size[p]18
-™html-size[h1]26
-šhtml-size[h2]24
-›html-size[h3]22
-œhtml-size[h4]20
-html-size[h5]18
-žhtml-size[h6]16
-,Ÿguild_build_buy_price20,40,80,120,160
- banner_play_interval3
-.¡%arena_extra_reward_auto_open_downtime15
-'¢arena_complete_reward_week_time1
-"£arena_puzzle_day_give_time3
-(¤garden_npc_mission_reflash_cost50
-%¥garden_alchemy_speed_up_cost50
-$¦garden_banner_visiable_count3
-§pet_entry_lock_cost50
-$¨garden_challenge_times_limit3
-8©garden_challenge_times_cost50,100,150,200,250,300
-#ªbonfire_mutual_reward_time10
-«mount_equip_bag_limit120
-¬garden_ship_time9
-­garden_task_cd1800
-!®flower_border_size_rate0.1
-¯flower-pixel_per_ms0.8
-°flower-max_expand800
-±flower-max_scale1
-²flower-min_scale0.6
-#³flower-min_empty_grid_count0
-"´flower-float_touch_radius50
-µflower-float_drag25
-¶flower-float_distance0.5
-·flower-y_per_h40
-¸pvp_win_chest_id120001
-&¹pvp_chest_base_times10,20,30,50
-ºpvp_chest_base_id120002
-"»garden_alchemy_warehouse200
-"¼pvp_puzzle_reward_get_time2
- ½pvp_puzzle_day_give_time5
-$¾flower_exchange_tips_alpha0.5
- ¿flower_bubble_cut_keep600
-Àflower-first_ship7200
-Áflower-guide_float_x16
-Âflower-guide_float_z17
-*Ãflower-guide_merge_finger_speed0.05
- Äexchange_water_to_gold500
-#Åexchange_paint_to_gold100000
-Æflower-default_scale0.8
-+Çshow_battle_arrow_level_limit1005040
-!Ètheme_boss_time_limit30000
-Éflower-anim_min3
-Êflower-anim_max7
-Ë
-ta_version10
- Ìloop_activity_pray_time30
- Íflower-UIswitch_scale0.55
-$Îflower-NPC_mission_cloddown10
- Ïchat_max_history_length50
-Ðt_altas_max_level6
-Ñf_altas_max_level10
-Òflower_tip_wait_ms3000
-Óflower_tip_touch_count2
-%Ôforest_mysterious_shop_time240
-Õforest_rank_season_time7
- Öloop_boss_time_limit30000
-×evaluation_hot_border50
-"Øevaluation_list_ele_count30
-!Ùevaluation_hot_keep_count3
-Úisland_rob_proportion0.5
- Ûisland_keep_proportion0.9
-Üevaluation_cd10
-"Ýevaluation_char_max_count60
- Þequip_star_up_cost_count4
-2ßsoul_item_shop1000,1000,1000,2000,2000,2000
--àroulette_refresh_price0,10,20,30,40,50
-ábook_day_buy_time10
-!âworld_boss_battle_max_num2
-Hãgarden_mission_boots-60002,0,0,60105,20,10,60208,40,20,60309,60,30
-äisland_research_free5
-Kåisland_research_buy110,10,20,20,30,30,50,50,70,70,100,100,150,150,200
-&æguild_boss_buy_price100,300,600
-3çguild_boss_skill_buy_price50,100,200,300,500
-èguild_boss_skill621001
-$égarden_treeboss_sweep_limit50
-êgarden_npc_reward20
-"ëgarden_challenge_times_buy6
-Kìgarden_bulid_up590106,90206,90306,90406,90506,90606,90706,80001,80002
-=ígarden_shop_price_up_item10701,10704,10707,10710,10713
-5îgarden_shop_price_up_set1,5000,2,10000,5,20000
-ïhero_story_read_reward20
-ðtower_mop_unlock160
-ñtower_mop_free_time1
-(òtower_mop_buy_price50,100,150,200
-óworld_boss_buy_num3
-&ôworld_boss_buy_price100,300,600
- õworld_boss_skip_multiple2
-öpet_pool_free1
-÷garden_ship_buy_cont2
-!øgarden_ship_buy_cost50,100
-0ùbonfire_reward_break_pirce_b50,80,100,150
-#úbonfire_reward_break_time_s5
-#ûbonfire_reward_break_time_b5
-ücredit_point80
-ýcredit_deduct2
-þcredit_block10
-ÿcredit_redline20
-€credit_login_day3
-credit_online_time120
-‚credit_recharge30
-ƒcredit_point_add1
-„
-credit_top100
-/…bonfire_reward_break_pirce_s30,50,80,100
-†sp_hero_group30007
-‡five_star_hero_point500
-ˆfive_star_hero_value2000
-!‰open_arena_skip_fight_min5
-Špeak_count_down7
- ‹
-arena_shop200,300,400,500
-7Œeq_rebulid_group 1,3000,2,3000,3,3000,4,500,5,500
- eq_rebulid_props_cfg20156
-Žroulette_refresh_time4
--#hero_conscription_calculation_point200
-/#hero_conscription_calculation_value10000
-!‘guild_name_change_price500
- ’activity_shop500,800,1000
-“peak_service_reward19001
-%”cross_peak_service_reward19002
-•statue_got_item_scale0.5
-–statue_got_speed0.004
-—statue_got_area2
->˜announce_address'http://120.92.147.167:8349/game/notices

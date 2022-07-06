@@ -33,8 +33,4 @@
     </Reference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Excel2CSharp\Config\" />
-  </ItemGroup>
-
 </Project>
