@@ -49,27 +49,38 @@ namespace ProtoBuf.Reflection
             /// </summary>
             public override string Pluralize(string identifier) => AutoPluralize(identifier);
         }
+
         /// <summary>
         /// Suggest a name with idiomatic name capitalization
         /// </summary>
-        protected static string AutoCapitalize(string identifier)
+        protected static string AutoCapitalize (string identifier)
         {
-            if (string.IsNullOrEmpty(identifier)) return identifier;
+            if ( string.IsNullOrEmpty (identifier) )
+            {
+                return identifier;
+            }
+
             // if all upper-case, make proper-case
-            if (Regex.IsMatch(identifier, "^[_A-Z0-9]*$"))
+            if ( Regex.IsMatch (identifier , @"^[_A-Z0-9]*$") )
             {
-                return Regex.Replace(identifier, "(^|_)([A-Z0-9])([A-Z0-9]*)",
-                    match => match.Groups[2].Value.ToUpperInvariant() + match.Groups[3].Value.ToLowerInvariant());
+                return Regex.Replace (identifier , @"(^|_)([A-Z0-9])([A-Z0-9]*)" ,
+                    match => match.Groups [2].Value.ToUpperInvariant () + match.Groups [3].Value.ToLowerInvariant ());
             }
+
             // if all lower-case, make proper case
-            if (Regex.IsMatch(identifier, "^[_a-z0-9]*$"))
+            if ( Regex.IsMatch (identifier , @"^[_a-z0-9]*$") )
             {
-                return Regex.Replace(identifier, "(^|_)([a-z0-9])([a-z0-9]*)",
-                    match => match.Groups[2].Value.ToUpperInvariant() + match.Groups[3].Value.ToLowerInvariant());
+                return Regex.Replace (identifier , @"(^|_)([a-z0-9])([a-z0-9]*)" ,
+                    match => match.Groups [2].Value.ToUpperInvariant () + match.Groups [3].Value.ToLowerInvariant ());
             }
+
+            //first char upper
+            identifier = char.ToUpper (identifier [0]) + identifier.Substring (1);
+
             // just remove underscores - leave their chosen casing alone
-            return identifier.Replace("_", "");
+            return identifier.Replace ("_" , "");
         }
+
         /// <summary>
         /// Suggest a name with idiomatic pluralization
         /// </summary>
