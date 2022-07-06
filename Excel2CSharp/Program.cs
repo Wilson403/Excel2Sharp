@@ -14,7 +14,7 @@ namespace Excel2CSharp
         public static string byteFilePath;
         public static string excelOverviewPath;
         public static string excelDir;
-
+        public static string hotCsharpPath;
 
         static void Main (string [] args)
         {
@@ -29,6 +29,7 @@ namespace Excel2CSharp
 
                 if ( lhs.StartsWith ("--byte_out")
                     || lhs.StartsWith ("--csharp_out")
+                    || lhs.StartsWith ("--hot_csharp_out")
                     || lhs.StartsWith ("--proto_out")
                     || lhs.StartsWith ("--excelOver_out")
                     || lhs.StartsWith ("--excel_out") )
@@ -58,6 +59,10 @@ namespace Excel2CSharp
 
                     case "--excel_out":
                         excelDir = rhs;
+                        break;
+
+                    case "--hot_csharp_out":
+                        hotCsharpPath = rhs;
                         break;
 
                     case "--start":

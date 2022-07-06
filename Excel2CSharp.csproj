@@ -28,9 +28,6 @@
     <Reference Include="ExcelDataReader.DataSet">
       <HintPath>Excel2CSharp\ThirdParty\ExcelDataReader.DataSet.dll</HintPath>
     </Reference>
-    <Reference Include="protobuf-net.Reflection">
-      <HintPath>Excel2CSharp\ThirdParty\protobuf-net.Reflection.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

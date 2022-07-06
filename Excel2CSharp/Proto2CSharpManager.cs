@@ -21,6 +21,7 @@ namespace Excel2CSharp
             RefreshProteFiles ();
             CreateOverViewProtoFile ();
             RefreshProteFiles ();
+            Proto2HotCSharp ();
             Proto2Csharp ();
         }
 
@@ -46,14 +47,11 @@ namespace Excel2CSharp
                 var fileName = strArr [^1];
                 set.Add (fileName , true);
             }
-
             set.Process ();
-            //ProtoBuf.Reflection.CSharpCodeGenerator.ClearTypeNames ();
-            var files = ProtoBuf.Reflection.CSharpCodeGenerator.Default.Generate (set , null , new Dictionary<string , string> (StringComparer.OrdinalIgnoreCase));
 
+            var files = ProtoBuf.Reflection.CSharpCodeGenerator.Default.Generate (set , null , new Dictionary<string , string> (StringComparer.OrdinalIgnoreCase));
             string [] contents = new string [files.Count ()];
             var index = 0;
-
             //导出每一个CS文件
             foreach ( var file in files )
             {
@@ -63,6 +61,38 @@ namespace Excel2CSharp
             }
             _csAssembly = ExcelUtil.GenerateAssemblyFromCode (contents);
             ExportProtoData (ExcelConst.EXCEL_2_PROTOBUF_SCRIPT_NAMESPACE_1 , ExcelConst.ALL_CONFIG_HOT_CLASS_NAME , true);
+        }
+
+        /// <summary>
+        /// 导出热更使用的CSharp代码
+        /// </summary>
+        private void Proto2HotCSharp ()
+        {
+            ExcelUtil.DelectDir (Program.hotCsharpPath);
+            Directory.CreateDirectory (Program.hotCsharpPath);
+
+            var set = new ProtoBuf.Reflection.ILRuntime.FileDescriptorSet ();
+            set.AddImportPath (Program.protoFilePath);
+
+            //添加每个proto文件的名称
+            foreach ( var file in _protoFiles )
+            {
+                var strArr = file.Split ('\\');
+                var fileName = strArr [strArr.Length - 1];
+                set.Add (fileName , true);
+            }
+
+            set.Process ();
+            ProtoBuf.Reflection.ILRuntime.CSharpCodeGenerator.ClearTypeNames ();
+            var files = ProtoBuf.Reflection.ILRuntime.CSharpCodeGenerator.Default.Generate (set);
+
+            //导出每一个CS文件
+            foreach ( var file in files )
+            {
+                var path = Path.Combine (Program.hotCsharpPath , file.Name);
+                File.WriteAllText (path , file.Text);
+                ProtoBuf.Reflection.ILRuntime.CSharpCodeGenerator.ClearTypeNames ();
+            }
         }
 
         private void ExportProtoData (string nameSpace , string allConfigClassName , bool isCreateMds = false)
