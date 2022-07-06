@@ -20,7 +20,7 @@ namespace Excel2CSharp
         public DataSetExchangeTool (string sourcefileName)
         {
             _sourcefileName = sourcefileName;
-            _excel2DataSet = new Excel2DataSet (Encoding.UTF8.GetString (Encoding.Default.GetBytes (Path.Combine (Program.excelDir , $"{sourcefileName}.xlsx")))); //含中文的路径
+            _excel2DataSet = new Excel2DataSet (Program.excelDir , $"{sourcefileName}.xlsx"); //含中文的路径
             ExportProtoFile ();
         }
 

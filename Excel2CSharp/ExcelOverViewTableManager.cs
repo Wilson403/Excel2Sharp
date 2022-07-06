@@ -16,9 +16,9 @@ namespace Excel2CSharp
         private readonly Dictionary<string , List<ExcelOverViewTableVo>> _excelOverViewList = new Dictionary<string , List<ExcelOverViewTableVo>> ();
         private readonly List<string> _excelOverViewKeyArray = new List<string> ();
 
-        public void Init (string excelOverviewPath)
+        public void Init (string path , string excelFileName)
         {
-            Excel2DataSet excelExchangeTools = new Excel2DataSet (excelOverviewPath);
+            Excel2DataSet excelExchangeTools = new Excel2DataSet (path , excelFileName);
             var sheet = excelExchangeTools.GetFirstTable ();
 
             for ( int i = 0 ; i < sheet.Rows.Count ; i++ )

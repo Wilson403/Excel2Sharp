@@ -13,8 +13,9 @@ namespace Excel2CSharp
     {
         private readonly DataSet _allTableData;
 
-        public Excel2DataSet (string excelFile)
+        public Excel2DataSet (string path , string excelFileName)
         {
+            var excelFile = Path.Combine (path , excelFileName);
             var sw = new Stopwatch ();
             sw.Start ();
             using ( FileStream stream = new FileStream (excelFile , FileMode.Open , FileAccess.Read , FileShare.ReadWrite) )
@@ -26,9 +27,9 @@ namespace Excel2CSharp
                     _allTableData = mExcelReader.AsDataSet ();
                     if ( _allTableData == null || _allTableData.Tables.Count == 0 )
                     {
-                        throw new Exception ($"{excelFile}读取异常");
+                        throw new Exception ($"{excelFileName}读取异常");
                     }
-                    Console.WriteLine ($"{excelFile}：读取耗时:{sw.ElapsedMilliseconds}ms");
+                    Console.WriteLine ($"{excelFileName}：读取耗时:{sw.ElapsedMilliseconds}ms");
                 }
             }
         }

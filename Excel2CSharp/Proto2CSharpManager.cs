@@ -233,7 +233,7 @@ namespace Excel2CSharp
 
                         if ( ExcelOverViewTableManager.Ins.CheckExcelColIsCanFilter (sheet , j) )
                         {
-                            ConsoleHelper.Ins.WriteWarningLine ($"过滤掉一列数据，表{sheet.TableName},列数为{j}");
+                            ConsoleHelper.Ins.WriteWarningLine ($"过滤掉一列数据，表{sheet.TableName},类名{className},列数为{j}");
                             continue;
                         }
 

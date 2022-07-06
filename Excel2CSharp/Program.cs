@@ -61,7 +61,7 @@ namespace Excel2CSharp
                         break;
 
                     case "--start":
-                        ExcelOverViewTableManager.Ins.Init (Path.Combine (excelOverviewPath , "设置导出的表格.xlsx"));
+                        ExcelOverViewTableManager.Ins.Init (excelOverviewPath , "设置导出的表格.xlsx");
                         Start ();
                         break;
 
