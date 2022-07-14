@@ -19,6 +19,15 @@ namespace Excel2CSharp
 
         public void Init ()
         {
+            ExcelUtil.DelectDir (Program.csharpPath);
+            Directory.CreateDirectory (Program.csharpPath);
+
+            ExcelUtil.DelectDir (Program.hotCsharpPath);
+            Directory.CreateDirectory (Program.hotCsharpPath);
+
+            ExcelUtil.DelectDir (Program.jsonFileExportDir);
+            Directory.CreateDirectory (Program.jsonFileExportDir);
+
             RefreshProteFiles ();
             CreateOverViewProtoFile ();
             RefreshProteFiles ();
@@ -32,13 +41,6 @@ namespace Excel2CSharp
         /// </summary>
         private void Proto2Csharp ()
         {
-            ExcelUtil.DelectDir (Program.csharpPath);
-            //检查CS文件导出目录是否存在，不存在则创建
-            if ( !Directory.Exists (Program.csharpPath) )
-            {
-                Directory.CreateDirectory (Program.csharpPath);
-            }
-
             var set = new Google.Protobuf.Reflection.FileDescriptorSet ();
             set.AddImportPath (Program.protoFilePath);
 
@@ -70,9 +72,6 @@ namespace Excel2CSharp
         /// </summary>
         private void Proto2HotCSharp ()
         {
-            ExcelUtil.DelectDir (Program.hotCsharpPath);
-            Directory.CreateDirectory (Program.hotCsharpPath);
-
             var set = new ProtoBuf.Reflection.ILRuntime.FileDescriptorSet ();
             set.AddImportPath (Program.protoFilePath);
 

@@ -1,4 +1,6 @@
-﻿namespace Excel2CSharp
+﻿using System;
+
+namespace Excel2CSharp
 {
     public static class ExcelDataReaderExtend
     {
@@ -9,6 +11,7 @@
             {
                 return 0;
             }
+
             return int.Parse (CertainNumIsInt (val));
         }
 
@@ -59,7 +62,11 @@
         /// <returns></returns>
         private static string CertainNumIsInt (string content)
         {
-            return content.Split (".") [0];
+            if ( content.Contains ('.') )
+            {
+                content = Math.Round (double.Parse (content)).ToString ();
+            }
+            return content.Split ('.') [0];
         }
     }
 }
