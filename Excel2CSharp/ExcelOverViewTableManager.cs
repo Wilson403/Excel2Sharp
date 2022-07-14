@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 
 namespace Excel2CSharp
 {
@@ -97,6 +98,24 @@ namespace Excel2CSharp
         public bool CheckExcelColIsCanFilter (DataTable sheet , int col)
         {
             return string.IsNullOrEmpty (sheet.Rows [1] [col].GetString ()) || string.IsNullOrEmpty (sheet.Rows [2] [col].GetString ());
+        }
+
+        /// <summary>
+        /// 获取加载批次
+        /// </summary>
+        /// <param name="exportFileName"></param>
+        /// <returns></returns>
+        public int GetLoadIndex (string exportFileName)
+        {
+            foreach ( var item in _excelOverViewList.Values )
+            {
+                var vo = item.FirstOrDefault (y => y.exportFileName.Equals (exportFileName));
+                if ( !string.IsNullOrEmpty (vo.exportFileName) )
+                {
+                    return vo.loadIndex;
+                }
+            }
+            return 0;
         }
     }
 }

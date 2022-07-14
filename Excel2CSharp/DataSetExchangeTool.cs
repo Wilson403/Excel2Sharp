@@ -13,7 +13,7 @@ namespace Excel2CSharp
         /// Key：类名
         /// Value: 脚本数据信息
         /// </summary>
-        private readonly Dictionary<string , ConfigScriptCacheDataVo> _configScriptDataDict = new Dictionary<string , ConfigScriptCacheDataVo> ();
+        public readonly Dictionary<string , ConfigScriptCacheDataVo> configScriptDataDict = new Dictionary<string , ConfigScriptCacheDataVo> ();
         private readonly Excel2DataSet _excel2DataSet;
         private readonly string _sourcefileName;
 
@@ -72,7 +72,7 @@ namespace Excel2CSharp
                 };
 
                 //将它缓存起来，其它地方需要用到这些数据
-                _configScriptDataDict.Add (className , configScriptDataVo);
+                configScriptDataDict.Add (className , configScriptDataVo);
 
                 //用于拼接文件内容
                 StringBuilder sb = new StringBuilder ();
@@ -175,7 +175,7 @@ namespace Excel2CSharp
         /// <returns></returns>
         public bool TryGetConfigScriptCacheData (string className , out ConfigScriptCacheDataVo configScriptCacheDataVo)
         {
-            return _configScriptDataDict.TryGetValue (className , out configScriptCacheDataVo);
+            return configScriptDataDict.TryGetValue (className , out configScriptCacheDataVo);
         }
     }
 }

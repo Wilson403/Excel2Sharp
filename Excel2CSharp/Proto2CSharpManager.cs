@@ -23,6 +23,7 @@ namespace Excel2CSharp
             RefreshProteFiles ();
             Proto2HotCSharp ();
             Proto2Csharp ();
+            CreateConfigMgrScript ();
         }
 
         /// <summary>
@@ -501,6 +502,91 @@ namespace Excel2CSharp
             template = template.Replace ("{3}" , variableNameSb1.ToString ());
             //写入内容
             File.WriteAllText (Path.Combine (Program.protoFilePath , ExcelConst.ALL_CONFIG_HOT_PROTO_NAME) , template);
+        }
+
+        /// <summary>
+        /// 创建配置管理器脚本 ConfigMgr
+        /// </summary>
+        private void CreateConfigMgrScript ()
+        {
+            //================读取各种脚本模板=====================
+            string configMgrMethodContentTemplate = File.ReadAllText (Path.Combine (Program.configPath , "ConfigMgrMethodContent.txt"));
+            string mainConfigMgrScriptTemplate = File.ReadAllText (Path.Combine (Program.configPath , "MainConfigMgrTemplate.txt"));
+            string configMgrScriptTemplate = File.ReadAllText (Path.Combine (Program.configPath , "ConfigMgrTemplate.txt"));
+            string configMgrContentTemplate = File.ReadAllText (Path.Combine (Program.configPath , "ConfigMgrContentTemplate.txt"));
+            string configParseTemplate = File.ReadAllText (Path.Combine (Program.configPath , "ConfigParseTemplate.txt") , Encoding.GetEncoding ("gb2312"));
+            string configRegisterTemplate = File.ReadAllText (Path.Combine (Program.configPath , "ConfigRegisterTypeTemplate.txt") , Encoding.GetEncoding ("gb2312"));
+
+            //================定义各种字符串拼接器=====================
+            StringBuilder configMgrContentSb = new StringBuilder ();
+            StringBuilder configRegisterContentSb = new StringBuilder ();
+            StringBuilder configParseSb = new StringBuilder ();
+            StringBuilder firstInitConfigMgrSb = new StringBuilder ();
+            StringBuilder secondInitConfigMgrSb = new StringBuilder ();
+            StringBuilder mainConfigParseSb = new StringBuilder ();
+
+            var sortedDict = Program.WhereConfigScriptCacheDataVo ().OrderBy (x => x.sheetId);
+            var secondCount = sortedDict.Where (x => ExcelOverViewTableManager.Ins.GetLoadIndex (x.exportFileName).Equals (0)).Count ();
+            var firstCount = sortedDict.Count () - secondCount;
+
+            //穷举配置脚本数据字典，将数据分发给各种拼接器
+            foreach ( var configScriptData in sortedDict )
+            {
+                var lowerName = ExcelUtil.ToLowerFirst (configScriptData.className);
+                var content = configMgrContentTemplate.Replace ("{upper_class_name}" , configScriptData.className);
+
+                var methodContent = configMgrMethodContentTemplate.Replace ("{upper_class_name}" , configScriptData.className);
+                methodContent = methodContent.Replace ("{lower_class_name}" , lowerName);
+
+                content = content.Replace ("{lower_class_name}" , lowerName);
+                content = content.Replace ("{fileName}" , configScriptData.sourceFile);
+                content = content.Replace ("{sheetName}" , configScriptData.worksheet.TableName);
+
+                //复制新的一份的content
+                var content2 = content;
+
+                var propName = configScriptData.className + "ConfigData";
+                var configParseContent = configParseTemplate.Replace ("{0}" , propName);
+
+                methodContent = methodContent.Replace ("{allconfigName}" , ExcelConst.ALL_CONFIG_VAR_NAME_1);
+                configParseContent = configParseContent.Replace ("{allconfigName}" , ExcelConst.ALL_CONFIG_VAR_NAME_1);
+                configRegisterContentSb.Append ($"\t\t\tILRuntime_{configScriptData.exportFileName}.Initlize();\n");
+                content2 = content2.Replace ("{0}" , methodContent);
+
+                var initConfigMgrStr = $"\t\t\tInit{propName}();\n";
+                //根据加载批次的不同，填充到不同的拼接器
+                if ( ExcelOverViewTableManager.Ins.GetLoadIndex (configScriptData.exportFileName).Equals (0) )
+                {
+                    secondInitConfigMgrSb.Append (initConfigMgrStr);
+                    configParseContent = configParseContent.Replace ("{count}" , "SECOND_CONFIG_COUNT");
+                }
+                else
+                {
+                    firstInitConfigMgrSb.Append (initConfigMgrStr);
+                    configParseContent = configParseContent.Replace ("{count}" , "FIRST_CONFIG_COUNT");
+                }
+
+                configParseSb.Append ($"{configParseContent}\n\n");
+                configMgrContentSb.Append ($"{content2}\n\n");
+            }
+
+            //对配置管理脚本进行字符串替换
+            configMgrScriptTemplate = configMgrScriptTemplate.Replace ("{0}" , firstInitConfigMgrSb.ToString ());
+            configMgrScriptTemplate = configMgrScriptTemplate.Replace ("{1}" , configMgrContentSb.ToString ());
+            configMgrScriptTemplate = configMgrScriptTemplate.Replace ("{2}" , configParseSb.ToString ());
+            configMgrScriptTemplate = configMgrScriptTemplate.Replace ("{3}" , secondInitConfigMgrSb.ToString ());
+            configMgrScriptTemplate = configMgrScriptTemplate.Replace ("{count_1}" , $"{firstCount}");
+            configMgrScriptTemplate = configMgrScriptTemplate.Replace ("{count_2}" , $"{secondCount}");
+
+            //对配置注册脚本进行字符串替换
+            configRegisterTemplate = configRegisterTemplate.Replace ("{0}" , configRegisterContentSb.ToString ());
+
+            //对主工程配置管理器进行字符串的替换
+            mainConfigMgrScriptTemplate = mainConfigMgrScriptTemplate.Replace ("{0}" , mainConfigParseSb.ToString ());
+
+            //================这些是将内容写入CS文件的逻辑=====================
+            File.WriteAllText (Path.Combine (Program.hotCsharpPath , ExcelConst.CONFIG_MGR_SCRIPT_NAME) , configMgrScriptTemplate , Encoding.UTF8);
+            File.WriteAllText (Path.Combine (Program.hotCsharpPath , "ILRuntime_ConfigRegisterType.cs") , configRegisterTemplate , Encoding.UTF8);
         }
     }
 }

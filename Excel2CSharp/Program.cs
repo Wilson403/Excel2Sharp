@@ -101,5 +101,18 @@ namespace Excel2CSharp
             }
             return false;
         }
+
+        public static List<ConfigScriptCacheDataVo> WhereConfigScriptCacheDataVo ()
+        {
+            List<ConfigScriptCacheDataVo> list = new List<ConfigScriptCacheDataVo> ();
+            for ( int i = 0 ; i < _cacheDataSetExchangeToolList.Count ; i++ )
+            {
+                foreach ( var item in _cacheDataSetExchangeToolList [i].configScriptDataDict.Values )
+                {
+                    list.Add (item);
+                }
+            }
+            return list;
+        }
     }
 }
