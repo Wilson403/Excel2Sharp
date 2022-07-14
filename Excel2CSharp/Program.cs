@@ -15,6 +15,8 @@ namespace Excel2CSharp
         public static string excelOverviewPath;
         public static string excelDir;
         public static string hotCsharpPath;
+        public static string jsonFileExportDir;
+
 
         static void Main (string [] args)
         {
@@ -63,6 +65,10 @@ namespace Excel2CSharp
 
                     case "--hot_csharp_out":
                         hotCsharpPath = rhs;
+                        break;
+
+                    case "--json_export_dir":
+                        jsonFileExportDir = rhs;
                         break;
 
                     case "--start":

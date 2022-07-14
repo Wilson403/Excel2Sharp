@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -152,6 +153,8 @@ namespace Excel2CSharp
                 else
                 {
                     ExportByteFile (excelData , propertyInfo.Name + ".bytes");
+                    ExportJsonFile (excelData , propertyInfo.Name + ".json");
+
                     //给汇总对象赋值，将用于生成汇总二进制文件
                     propertyInfo.SetValue (allConfigObj , excelData);
                 }
@@ -175,6 +178,16 @@ namespace Excel2CSharp
                 bw.Close ();
                 fs.Close ();
             }
+        }
+
+        /// <summary>
+        /// 导出Json文件
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="fileName"></param>
+        private void ExportJsonFile (object data , string fileName)
+        {
+            File.WriteAllText (Path.Combine (Program.jsonFileExportDir , fileName) , ExcelUtil.ConvertJsonString (JsonConvert.SerializeObject (data)) , Encoding.UTF8);
         }
 
         /// <summary>
