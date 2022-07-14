@@ -34,7 +34,8 @@ namespace Excel2CSharp
                     || lhs.StartsWith ("--hot_csharp_out")
                     || lhs.StartsWith ("--proto_out")
                     || lhs.StartsWith ("--excelOver_out")
-                    || lhs.StartsWith ("--excel_out") )
+                    || lhs.StartsWith ("--excel_out")
+                    || lhs.StartsWith ("--json_export_dir") )
                 {
                     var arr = lhs.Split ("=");
                     lhs = arr [0];
